@@ -25,6 +25,18 @@
         value=(register.formData.firstName)!''
       />
       <@input.kw
+              autocomplete="patronym"
+              autofocus=true
+              invalid=messagesPerField.existsError("user.attributes.patronym")
+              label=msg("patronym")
+              message=kcSanitize(messagesPerField.get("user.attributes.patronym"))
+              name="user.attributes.patronym"
+              type="text"
+              value=(register.formData['user.attributes.patronym'])!''
+            />
+
+
+      <@input.kw
         autocomplete="family-name"
         invalid=messagesPerField.existsError("lastName")
         label=msg("lastName")
@@ -41,6 +53,15 @@
         name="email"
         type="email"
         value=(register.formData.email)!''
+      />
+      <@input.kw
+        autocomplete="date"
+        invalid=messagesPerField.existsError("user.attributes.dob")
+        label=msg("Date of Birth")
+        message=kcSanitize(messagesPerField.get("user.attributes.dob"))
+        name="user.attributes.dob"
+        type="date"
+        value=(register.formData['user.attributes.dob'])!''
       />
       <#if !realm.registrationEmailAsUsername>
         <@input.kw

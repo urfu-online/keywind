@@ -20,7 +20,11 @@
 >
   <#assign cardHeader>
     <@logo.kw>
-      ${kcSanitize(msg("loginTitleHtml", (realm.displayNameHtml!"")))?no_esc}
+      <#if client.attributes.logoUri??>
+         <img class="mb-4 mx-auto" src="${client.attributes.logoUri}" alt="${realm.displayName}"/>
+      <#else>
+         ${kcSanitize(msg('loginTitleHtml', (realm.displayNameHtml!'')))?no_esc}
+      </#if>
     </@logo.kw>
     <#if !(auth?has_content && auth.showUsername() && !auth.showResetCredentials())>
       <@heading.kw>
