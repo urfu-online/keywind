@@ -20,7 +20,7 @@
 >
   <#assign cardHeader>
     <@logo.kw>
-      <#if client.attributes.logoUri??>
+      <#if (client.attributes.logoUri)??>
          <img class="mb-4 mx-auto" src="${client.attributes.logoUri}" alt="${realm.displayName}"/>
       <#else>
          ${kcSanitize(msg('loginTitleHtml', (realm.displayNameHtml!'')))?no_esc}
@@ -82,6 +82,8 @@
             <@localeProvider.kw currentLocale=locale.current locales=locale.supported />
           </#if>
         </@nav.kw>
+        <a href="https://t.me/urfu_online_support_bot">Помощь</a>
+
       </@container.kw>
     </@body.kw>
   </html>
